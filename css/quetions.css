@@ -1,0 +1,329 @@
+﻿/****************************************************/
+/*                      main styles                 */
+/***************************************************/
+*,body{
+    box-sizing: border-box;
+    font-weight: 500;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+}
+*{
+    position: relative;
+    transition: background .3s linear ;
+    animation-delay: 1.2s;
+    animation-duration: .3s;
+    animation-iteration-count: 10;
+    animation-timing-function: linear;
+}
+.under-body{
+   height: 100vh;
+   max-height:100vh ; 
+   max-width: 100vw;
+   position: relative;
+   padding: .5rem;
+   background: #000;
+   overflow-x: hidden;
+}
+input, button{
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    background: #ffff;
+}
+.flex{
+    display: flex;
+}
+section,
+svg,
+button,
+p{
+    cursor: pointer;
+}
+.lay_out{
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0; 
+    background: rgb(0 0 0 / 83%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.lay_out div{
+    transform: translateY(-20%);
+    text-align: center;
+}
+.lay_out img{
+    height: 300px;
+    width: 300px;
+}
+.lay_out button{
+    padding: .5rem 1.5rem;
+    background: #eb737361;
+    border-radius: .5rem;
+    position: relative;
+    display: block;
+    margin: .5rem auto;
+}
+/***********************************/
+/*          cheque                 */
+/***********************************/
+.cheque{
+    position: absolute;
+    top: 1rem;
+    left: 200%;
+    transform: translateX(-50%);
+    width: 60%;
+    min-width: 300px;
+    height: 50vh;
+    max-height: 300px;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 20;
+    box-shadow: inset 7px -10px 19px #fd0404b3,
+     0px -5px 5px 26px #1a87e6;
+     direction: rtl; 
+     animation-iteration-count: 1 ; 
+     animation-fill-mode: forwards !important;   
+}
+.cheque img{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: 100px;
+    height: 100px;
+}
+.cheque span{
+    position: absolute;
+    bottom:2.5rem;
+    left: 10%;
+    width: 80%;
+    border-bottom: 1px solid #777;
+    color: #000;
+    text-align: left;
+}
+.cheque p {
+    border-bottom: 1px solid #777;
+    color: #000;
+    flex: 1;
+}
+/*///////////*/
+header{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header img{
+    max-width: 100px;
+    max-height: 100px;
+}
+.dollar{
+    width: 8ch;
+    height: 70px;
+    border: 1px solid gold;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gold;
+}
+/****************************************************/
+/*                          tools                   */
+/***************************************************/
+.tools{
+    height:calc(50% - 90px);
+    width: 85%;
+    margin: .5rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-end;
+    gap: 1rem;
+}
+.tools div{
+   grid-area: span / 1;
+}
+.tools img{
+    width: 100%;
+    height: 100%;
+    max-width: 180px;
+    max-height: 130px;
+}
+/****************************************************/
+/*                      ask-answer                    */
+/***************************************************/
+.ask-answer{
+    height: 250px;
+}
+.line{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 14px;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+.line:nth-child(1){
+    top: 30px;
+}
+.line:nth-child(2){
+    top:  119px;
+}
+.line:nth-child(3){
+    top:  206px;
+}
+main{
+    padding: .5rem;
+    text-align: center;
+    width: 85%;
+    background: #002663;
+    margin: .5rem auto;
+    min-height: 70px;
+}
+.answer-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    width: 85%;
+    height:calc(100% - 80px);
+    padding: .5rem;
+    gap: 1rem 4.5rem;
+    margin: 0 auto .5rem ;
+}
+.answer-container > .timer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-85%);
+    max-width: 70px;
+    padding: .5rem;
+    z-index: 10;
+}
+.answer-container > section{
+    display: flex;
+    align-items: center;
+    background: #002663;
+    height: 70px !important;
+    direction: rtl;
+    position: relative;
+    z-index: 1;
+}
+.polygonal .after{
+    position: absolute;
+    bottom: 0;
+    left: -48px;
+    top: 46%;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    background: #002663;
+    transform: rotatez(-45deg)translateX(62%);
+}
+.polygonal .before{
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    background: #002663;
+    transform: rotatez(-44deg)translateX(70%);
+}
+.polygonal p {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: #002663;
+}
+/**********************************************/
+/*              animations                   */ 
+/*********************************************/
+@keyframes congratulations  {
+    0%{
+        background: rgb(5, 250, 5);
+    }
+    25%{
+        background: #405ec9;
+    }
+    50%{
+        background: rgb(5, 250, 5);
+    }
+    100%{
+        background: #405ec9;
+    }
+}
+@keyframes condolences {
+    0%{
+        background: #f00;
+    }
+    25%{
+        background: #405ec9;
+    }
+    50%{
+        background: #f00;
+    }
+    100%{
+        background: #405ec9;
+    }
+}
+@keyframes chequeMoving{
+    0%{
+        left: 120%;
+    }
+    50%{
+        left: 90%;
+    }
+    70%{
+        left: 70%;
+    }
+    90%{
+        left: 50%;
+    }
+    100%{
+        left: 50%;
+    }
+}
+/**********************************************/
+/*              media query                  */ 
+/*********************************************/
+@media only screen and (max-width: 600px) {
+    * {
+      font-size: 1rem;
+    }
+    .answer-container{
+        max-height: 200px;
+    }
+  }
+  @media only screen and (max-width: 300px){
+
+    .lay_out{
+        height: 150vh;
+    }
+
+    .lay_out img{
+        width: 100px;
+        height: 100px;
+    }
+    .cheque{
+        max-width: calc(100vw - 60px);
+        max-height: 50vh;
+    }
+    .cheque img{
+        width: 30px;
+        height: 30px;
+        right: auto;
+        left: 1.5rem;
+    }
+  }
