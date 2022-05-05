@@ -54,7 +54,7 @@ p{
     z-index: 100;
 }
 .lay_out div{
-    transform: translateY(-20%);
+    transform: translateY(-100%);
     text-align: center;
 }
 .lay_out img{
