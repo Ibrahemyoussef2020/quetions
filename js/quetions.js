@@ -17,9 +17,29 @@ const msgDollar = document.querySelector(".msg_dollar");
 const welldone = "ألف مبروك معك";
 const baddone  ="ليس معك الا";
 const Dollar   = document.querySelector(".dollar");
-clock = "stop";
+let clock = "stop";
 let target = 0;
+let random = 10 / 3 * Math.random();
+let randomPage = ((random % 10)).toFixed(1);
+let page1  = parseInt(randomPage.slice(2,6))+ 4 / 2  ;
+let page2  = parseInt(randomPage.slice(2,6))+ 9 /9 ;
+let page3  = parseInt(randomPage.slice(2,6))+ 4/ 1 ;
+let page4  = parseInt(randomPage.slice(2,6))+6/1 ;
+let page5  = parseInt(randomPage.slice(2,6))-1 ;
+let page6  = parseInt(randomPage.slice(2,6))+ 4 / 2  ;
+let page7  = parseInt(randomPage.slice(2,6))+ 9 /9 ;
+let page8  = parseInt(randomPage.slice(2,6))+ 4/ 1 ;
+let page9  = parseInt(randomPage.slice(2,6))+6/1;
+let page10 = parseInt(randomPage.slice(2,6)) -4;
 
+let page;
+let stup;
+const pages = ["./data1.json","./data2.json",
+"./data3.json","./data4.json",
+"./data5.json","./data3.json",
+"./data5.json","./data4.json",
+"./data2.json","./data1.json",
+]
 ///////////////////////////////////////
 //              start   game         //
 ///////////////////////////////////////
@@ -28,11 +48,25 @@ start.addEventListener("click",()=>{
     clock = "run";
     cheque.animationName = "";
     counter.innerText = 60;
+    Dollar.innerText = "$0"
+    
+    if(page1 > 1 && page1 < 4) page = page1;
+    else if(page2 > 1 && page2 < 10) page = page2;
+    else if(page3 > 1 && page3 < 10)page = page3;
+    else if(page4 > 1 && page4 < 10)page = page4;
+    else if(page5 > 1 && page5 < 10) page = page5;
+    else if(page6 > 1 && page6 < 10) page = page6;
+    else if(page7 > 1 && page7 < 10)page = page7;
+    else if(page8 > 1 && page8 < 10)page = page8;
+    else if(page9 > 1 && page9 < 10) page = page9;
+    else if(page10 > 1 && page10 < 10) page = page10;
+    else page = 0;
+    stup = pages[page];
     myRequest = new XMLHttpRequest();
     getAsks(myRequest);
-    target= 0;
-    
+    target= 0; 
     setInterval(timeDrop , timeout/2);
+    console.log(page)
 });
 
 ////////////////////////////
@@ -45,7 +79,11 @@ timeDrop = ()=>{
             counter.innerText.length < 2 ? counter.innerText = `0${counter.innerText}`:counter.innerText;
         }else{
             ASK_CONATAINER.innerHTML = lostTime;
-            setTimeout(returnRoot,500,data,target);
+            Dollar.innerText = data[target].money; 
+            chequeF(data,target);
+            setTimeout(() => {
+                location.reload();
+            }, timeout);        
         }
     } 
 } 
@@ -70,16 +108,15 @@ function getAsks(req) {
             try{
                 data = JSON.parse(this.responseText);
                 innerDom( data,target);
-
             }
             catch{
                 console.log("FALILD");
             }           
         }
     };
-    req.open("get", "./data.json",true);
+    req.open("get",stup,true);
     req.send();
-}   
+}
 ///////////////////////////////
 //        chooseAnswer      // 
 //////////////////////////////
@@ -91,6 +128,7 @@ function chooseAnswer( data,target){
                 let rightAnswer = Object.values(crreunt)[5];
                 clock = "stop";
 
+
                 if(rightAnswer == this.id){
 
                     children = [...this.children];
@@ -98,27 +136,28 @@ function chooseAnswer( data,target){
                     this.style.animationName = "congratulations";
                     children.forEach(child => child.style.animationName = "congratulations");
 
-                    if(target === data.length - 1){
+                    if(crreunt.last ===  "true"){
+                        console.log(crreunt)
                         Dollar.innerText = data[target].money;
                         chequeF(data,target);
-                        setTimeout(returnRoot,timeout,data,target);      
-                    }
-                   else {
-                        Dollar.innerText = data[target].money;
+                        setTimeout(() => {
+                            location.reload();
+                        }, timeout * 2); 
+                     } else {
+                         
+                       Dollar.innerText = data[target].money;
                         target++;
                         crreunt = data[target];
                         counter.innerText = 60;
                         setTimeout(innerDom,timeout,data,target);
-                        setTimeout(ramoveAnimation,timeout + 200,data,target);
+                        setTimeout(ramoveAnimation,timeout * 2,data,target);            
+
                    }
                 }else{ 
-                    
                    chequeF(data,target);   
-
                     children = [...this.children];
                     children.forEach(child => child.style.animationName = "condolences");
                     this.style.animationName = "condolences";
-
                     target = 0;
                     crreunt = data[target];
                     counter.innerText = 60;
@@ -133,8 +172,8 @@ function chooseAnswer( data,target){
                         answer.id == rightAnswer?children.forEach(child => child.style.animationDelay = 5 + "s") : "";
                     });
 
-                    setTimeout(ramoveAnimation,timeout + 500, data,target);
-                    setTimeout(returnRoot,timeout + 500,data,target); 
+                    setTimeout(ramoveAnimation,timeout * 2, data,target);
+                    setTimeout(returnRoot,timeout * 2,data,target); 
                 }     
             })  
        });    
@@ -152,7 +191,7 @@ function ramoveAnimation(data,target){
 
         answer.style.animationName = "";
         answer.style.animationDelay = 0 + "s";
-
+        
         children.forEach(child => {
             child.style.animationName = "";
             child.style.animationDelay = 0 + "s";
@@ -170,6 +209,7 @@ function returnRoot(data,target){
     setTimeout(() => {
         layOut.style.display = "flex";
         cheque.style.animationName = "";
+
     }, timeout);
 
     start.innerText = playAgain;
@@ -179,7 +219,8 @@ function returnRoot(data,target){
 ///////////////////////////
 function chequeF(data,target){
     
-    msgDollar.innerText = welldone;
+    msgDollar.innerText = target < data.length / 2 ?baddone :welldone ;
+    
     
     haveDollar.innerText = Dollar.innerText;
 
