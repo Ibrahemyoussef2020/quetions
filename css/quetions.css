@@ -17,6 +17,7 @@
     animation-duration: .3s;
     animation-iteration-count: 10;
     animation-timing-function: linear;
+    cursor: url(../img/cursor-click.png), pointer !important; 
 }
 .under-body{
    height: 100vh;
