@@ -17,7 +17,6 @@
     animation-duration: .3s;
     animation-iteration-count: 10;
     animation-timing-function: linear;
-    cursor: url(../img/cursor-click.png), pointer !important; 
 }
 .under-body{
    height: 100vh;
@@ -54,7 +53,7 @@ p{
     z-index: 100;
 }
 .lay_out div{
-    transform: translateY(-100%);
+    transform: translateY(-25%);
     text-align: center;
 }
 .lay_out img{
@@ -115,7 +114,9 @@ p{
     color: #000;
     flex: 1;
 }
-/*///////////*/
+/***********************************/
+/*          header                 */
+/***********************************/
 header{
     height: 100px;
     display: flex;
@@ -149,8 +150,27 @@ header img{
     align-items: flex-end;
     gap: 1rem;
 }
-.tools div{
-   grid-area: span / 1;
+.tools > div{
+    position: relative;
+}
+.close{
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+.close::after , .close::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    top: -10px;
+    left: 50%;
+    bottom: -5px;
+    right: 0;
+    background: red;
+    transform: rotatez(50deg);
+}
+.close::before{
+    transform: rotatez(-50deg) !important;
+    z-index: 2;
 }
 .tools img{
     width: 100%;
@@ -225,7 +245,7 @@ main{
     width: 50px;
     height: 50px;
     z-index: 1;
-    background: #002663;
+    background: inherit;
     transform: rotatez(-45deg)translateX(62%);
 }
 .polygonal .before{
@@ -236,7 +256,7 @@ main{
     width: 50px;
     height: 50px;
     z-index: 1;
-    background: #002663;
+    background: inherit;
     transform: rotatez(-44deg)translateX(70%);
 }
 .polygonal p {
@@ -246,8 +266,21 @@ main{
     left: 0;
     width: 100%;
     z-index: 2;
-    background: #002663;
+    background: inherit;
+    color: inherit;
 }
+.answer-container > section.opacity{
+    color: #002663 ;
+ }
+ .answer-container > section.opacity > *{
+     color: #002663 ;
+ }
+ .answer-container > section.marker{
+     background: #080 !important ;
+ }
+ .answer-container > section.marker > *{
+     background: #080 !important ;
+ }
 /**********************************************/
 /*              animations                   */ 
 /*********************************************/
