@@ -1,4 +1,7 @@
 export {faildStupe,nextStupe,endGame,dom,timeDrop,toolsF,removeToolsF,target,clock};
+
+import{qs,qsA,addEvents} from "./utilityFunthions.js";
+
 import {
     ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,
      start,refresh,tools,two,phone,pepole,timeout,answers,lostTime,passGame,playAgain,
@@ -85,19 +88,23 @@ function dom(data){
 ////////////////////////////////////////////////
 //            start functions                //
 ///////////////////////////////////////////////
-start.addEventListener("click",()=>{
-    counter.innerText = 60;
-    clock = "run"; 
-    layOut.style.display = "none";
-    cheque.style.animationName = "";
-    tools.forEach(tool=>{
-        tool.classList.contains("close") ? tool.classList.remove("close"):"";
-       console.log(tools);
-    }) 
-});
-refresh.addEventListener("click",_=>{
-    window.location.reload();
-});
+let btnsF = addEvents(
+    "click",
+    qsA("button"),
+    (element) => {
+        if(element.classList.contains("start")){
+            counter.innerText = 60;
+            clock = "run"; 
+            layOut.style.display = "none";
+            cheque.style.animationName = "";
+            tools.forEach(tool=>{
+                tool.classList.contains("close") ? tool.classList.remove("close"):"";
+            });
+        }else{
+            window.location.reload();
+        }
+    },
+)
 ////////////////////////////////////////////////
 //            tools functions                 //
 ///////////////////////////////////////////////
@@ -113,7 +120,6 @@ function toolsF(data){
                     }
                 });       
             }) 
-
         }else{
             tool.addEventListener("click",()=>{
                 tool.classList.add("close");
@@ -126,7 +132,7 @@ function toolsF(data){
         } 
     });
 }
-    //       remove tools    //
+//       remove tools     //
 function removeToolsF(){
     answers.forEach(section =>{
         section.classList.contains("opacity") ? section.classList.remove("opacity"):"";

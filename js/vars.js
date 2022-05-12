@@ -1,16 +1,11 @@
-export{qs,qsA,dataArray,ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,tools,
+import {qs,qsA} from "./utilityFunthions.js";
+
+export{dataArray,ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,tools,
 start,refresh,two,phone,pepole,timeout,answers,lostTime,passGame,playAgain,
  cheque,haveDollar,welldone,baddone,Dollar,msgDollar,
  page1,page2,page3,page4,page5,page6,
  page7,page8,page9,page10
 }  
-////////////////////////////////////
-function qs(selector, parent = document){
-    return parent.querySelector(selector);
-}
-function qsA(selector, parent = document){
-    return [...parent.querySelectorAll(selector)];
-}
 //////////////////////
 const dataArray = ["./jsonFiles/data2.json","./jsonFiles/data1.json",
 "./jsonFiles/data5.json","./jsonFiles/data4.json","./jsonFiles/data3.json",
