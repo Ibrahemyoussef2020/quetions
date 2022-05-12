@@ -1,15 +1,15 @@
 export {faildStupe,nextStupe,endGame,dom,timeDrop,toolsF,removeToolsF,target,clock};
 
-import{qs,qsA,addEvents} from "./utilityFunthions.js";
+import{qs,qsA,addEvents,random} from "./utilityFunthions.js";
 
 import {
     ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,
      start,refresh,tools,two,phone,pepole,timeout,answers,lostTime,passGame,playAgain,
      cheque,haveDollar,welldone,baddone,Dollar,
-     msgDollar,page1,page2,page3,page4,page5,page6,
-     page7,page8,page9,page10,
+     msgDollar,dataArray
 }from './vars.js';
 
+import {linkJson} from "./quetions.js";
 let target = 0;
 let clock;
 ////////////////////////////////////////////////
@@ -77,13 +77,15 @@ function timeDrop(data,target){
     } 
 }
 /////////////////////////////////
+//          inner dom          //
+/////////////////////////////////
 function dom(data){
     ASK_CONATAINER.innerHTML = data[target].quez;
     A1.innerText = data[target].a;
     A2.innerText = data[target].b;
     A3.innerText = data[target].c;
     A4.innerText = data[target].d; 
-    toolsF(data,target); 
+    toolsF(data); 
 }
 ////////////////////////////////////////////////
 //            start functions                //
@@ -92,7 +94,7 @@ let btnsF = addEvents(
     "click",
     qsA("button"),
     (element) => {
-        if(element.classList.contains("start")){
+        if(element.classList.contains("refresh")){
             counter.innerText = 60;
             clock = "run"; 
             layOut.style.display = "none";
@@ -101,7 +103,19 @@ let btnsF = addEvents(
                 tool.classList.contains("close") ? tool.classList.remove("close"):"";
             });
         }else{
-            window.location.reload();
+            refresh.classList.remove("no-click");
+            
+            let page = random(1 , 11);
+            let url =  dataArray[page] || dataArray[6];  
+            linkJson(url);
+
+            counter.innerText = 60;
+            clock = "run"; 
+            layOut.style.display = "none";
+            cheque.style.animationName = "";
+            tools.forEach(tool=>{
+                tool.classList.contains("close") ? tool.classList.remove("close"):"";
+            });
         }
     },
 )

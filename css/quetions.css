@@ -39,6 +39,7 @@ input, button{
 section,
 svg,
 button,
+div,
 p{
     cursor: pointer;
 }
@@ -46,7 +47,7 @@ p{
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0; 
-    background: rgb(0 0 0 / 83%);
+    background:#000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +68,10 @@ p{
     position: relative;
     display: block;
     margin: .5rem auto;
+}
+.no-click{
+    pointer-events: none;
+    opacity: 0;
 }
 /***********************************/
 /*          cheque                 */

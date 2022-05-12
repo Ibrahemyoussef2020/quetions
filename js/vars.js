@@ -3,8 +3,6 @@ import {qs,qsA} from "./utilityFunthions.js";
 export{dataArray,ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,tools,
 start,refresh,two,phone,pepole,timeout,answers,lostTime,passGame,playAgain,
  cheque,haveDollar,welldone,baddone,Dollar,msgDollar,
- page1,page2,page3,page4,page5,page6,
- page7,page8,page9,page10
 }  
 //////////////////////
 const dataArray = ["./jsonFiles/data2.json","./jsonFiles/data1.json",
@@ -37,21 +35,7 @@ ASK_CONATAINER = qs(".ask").children[0],
  baddone = "للأسف معك فقط",
  Dollar   = qs(".dollar");
 ///////////////////////////////////
-let random = 10 / 3 * Math.random(),
- randomPage = ((random % 10)).toFixed(1),
- page1  = parseInt(randomPage.slice(2,6))+ 4 / 2,
- page2  = parseInt(randomPage.slice(2,6))+ 9 /9,
- page3  = parseInt(randomPage.slice(2,6))+ 4/ 1,
- page4  = parseInt(randomPage.slice(2,6))+6/1,
- page5  = parseInt(randomPage.slice(2,6))-1,
- page6  = parseInt(randomPage.slice(2,6))+ 4 / 2,
- page7  = parseInt(randomPage.slice(2,6))+ 9 /9,
- page8  = parseInt(randomPage.slice(2,6))+ 4/ 1,
- page9  = parseInt(randomPage.slice(2,6))+6/1,
- page10 = parseInt(randomPage.slice(2,6)) -4,
- page,
- stup;
-//////////////////////////
+
 
 
 

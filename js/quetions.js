@@ -3,18 +3,17 @@ import {
      dataArray,ASK_CONATAINER,A1,A2,A3,A4,counter,layOut,
         start,timeout,answers,lostTime,passGame,playAgain,
         cheque,haveDollar,welldone,baddone,Dollar,
-        msgDollar,page1,page2,page3,page4,page5,page6,
-        page7,page8,page9,page10, two
+        msgDollar,two
 }from './vars.js';
 
 import {faildStupe,nextStupe,endGame,dom,timeDrop,
-        toolsF,removeToolsF,target,clock
+        toolsF,removeToolsF,target,clock,
+     
 } from "./stups.js";
-///////////////////////
-let page = random(1 , 11);
 
-let url =  dataArray[page];
-console.log(page)
+export {linkJson};
+///////////////////////
+function linkJson(url){
 fetch(url).then(
     (resolved)=> {
         let data = resolved.json();
@@ -50,3 +49,4 @@ fetch(url).then(
         return data;
     }
 );
+}
